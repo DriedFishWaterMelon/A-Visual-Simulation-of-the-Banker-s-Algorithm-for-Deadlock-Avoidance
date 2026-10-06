@@ -1,3 +1,5 @@
 c/banker
 c/banker.exe
 *.o
+__pycache__/
+*.mp4
