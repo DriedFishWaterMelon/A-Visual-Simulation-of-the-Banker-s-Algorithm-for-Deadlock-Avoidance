@@ -3,6 +3,9 @@
 โปรแกรมจำลองแบบเห็นภาพของ Banker's Algorithm (Deadlock Avoidance) วิชา Operating Systems
 เป็นเว็บแอป HTML/CSS/JavaScript ล้วน **ไม่ต้องติดตั้งอะไร ไม่ต้องมี server**
 
+> **มีเวอร์ชัน Python แบบแอนิเมชันเต็มรูปแบบ** (เหมือนคลิปอธิบายบน YouTube มีคำบรรยายทุกขั้น และ export เป็น MP4 ได้) อยู่ในโฟลเดอร์ [`python/`](python/README.md)
+> `pip install pygame` แล้ว `python python/main.py`
+
 ## วิธีรัน
 
 1. ดับเบิลคลิกไฟล์ `index.html` (เปิดด้วย Chrome / Edge / Firefox)
