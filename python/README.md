@@ -21,6 +21,14 @@ python main.py --all --record banker_all.mp4      # all 6 samples in one video
 python main.py --sample 2 --speed 1.5 --record fast.mp4
 ```
 
+## Google Colab
+
+Open [`banker_colab.ipynb`](banker_colab.ipynb) in Colab (`File → Upload notebook`, or
+[open it straight from GitHub](https://colab.research.google.com/github/DriedFishWaterMelon/A-Visual-Simulation-of-the-Banker-s-Algorithm-for-Deadlock-Avoidance/blob/main/python/banker_colab.ipynb)
+if the repo is public), then `Runtime → Run all`. It renders the video and plays it in the notebook,
+and also has a step-by-step slider viewer. Pick a sample or type your own data in the form.
+The notebook is self-contained; after changing the `.py` files, rebuild it with `python make_notebook.py`.
+
 ## Controls
 
 | Key | Action |
@@ -65,5 +73,6 @@ samples.py      the 6 sample scenarios with hand-checked answers
 script.py       turns a scenario into "beats": narration + what the screen shows
 render.py       draws a frame, animating from the previous beat to the current one
 main.py         window / controls / MP4 export
+make_notebook.py  builds banker_colab.ipynb from the files above
 test_banker.py  python test_banker.py
 ```
