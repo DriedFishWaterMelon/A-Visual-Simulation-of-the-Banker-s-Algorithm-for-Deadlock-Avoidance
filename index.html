@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Banker's Algorithm Simulator</title>
+  <link rel="stylesheet" href="ui/style.css">
+</head>
+<body>
+  <header>
+    <h1>Banker's Algorithm — Visual Simulation</h1>
+    <p>จำลองการตรวจ safe state และการอนุมัติ/ปฏิเสธ request เพื่อหลีกเลี่ยง deadlock</p>
+  </header>
+
+  <main>
+    <section class="card" id="data-card">
+      <h2>1. ข้อมูลระบบ</h2>
+      <div class="toolbar">
+        <label>ตัวอย่าง
+          <select id="sample-select"></select>
+        </label>
+        <button id="btn-random">สุ่มข้อมูล</button>
+        <button id="btn-add-p">+ Process</button>
+        <button id="btn-del-p">− Process</button>
+        <button id="btn-add-r">+ Resource</button>
+        <button id="btn-del-r">− Resource</button>
+        <button id="btn-save">บันทึก JSON</button>
+        <label class="filebtn">โหลด JSON<input type="file" id="file-load" accept=".json,application/json" hidden></label>
+      </div>
+      <p id="sample-desc" class="muted"></p>
+      <div id="errors" class="errors" hidden></div>
+      <div class="scroll"><div id="editor"></div></div>
+      <p class="muted">แก้ตัวเลขในช่อง Available / Allocation / Max ได้ทันที ส่วน Need คำนวณเองเสมอ (Need = Max − Allocation)</p>
+    </section>
+
+    <section class="card" id="safety-card">
+      <h2>2. Safety Algorithm ทีละขั้น</h2>
+      <div class="viewbar">
+        <span id="view-label" class="badge"></span>
+        <button id="btn-back-current" hidden>กลับไปสถานะปัจจุบัน</button>
+      </div>
+      <div class="controls">
+        <button id="s-reset" title="เริ่มใหม่">⏮ เริ่มใหม่</button>
+        <button id="s-prev">◀ ย้อนกลับ</button>
+        <button id="s-next">ถัดไป ▶</button>
+        <button id="s-end">ข้ามไปจบ ⏭</button>
+        <button id="s-play">▶ เล่นอัตโนมัติ</button>
+        <span id="s-counter" class="muted"></span>
+      </div>
+      <div class="workline">
+        <div><b>Work</b> <span id="work"></span></div>
+        <div><b>Safe sequence</b> <span id="seq"></span></div>
+      </div>
+      <div id="explain" class="explain"></div>
+      <div class="scroll"><table id="safety-table"></table></div>
+      <div class="legend">
+        <span class="dot checking"></span> กำลังตรวจ
+        <span class="dot fin"></span> จบแล้ว (Finish = true)
+        <span class="dot ok"></span> Need ≤ Work
+        <span class="dot bad"></span> Need > Work
+      </div>
+      <details>
+        <summary>บันทึกขั้นตอนทั้งหมด</summary>
+        <ol id="log" class="log"></ol>
+      </details>
+    </section>
+
+    <section class="card" id="request-card">
+      <h2>3. จำลอง Resource Request</h2>
+      <div class="toolbar">
+        <label>Process <select id="req-pid"></select></label>
+        <div id="req-inputs" class="reqinputs"></div>
+        <button id="btn-req" class="primary">ส่ง request</button>
+      </div>
+      <p id="req-need" class="muted"></p>
+      <div id="req-result" hidden></div>
+    </section>
+  </main>
+
+  <script src="core/banker.js"></script>
+  <script src="simulation/stepper.js"></script>
+  <script src="samples/samples.js"></script>
+  <script src="ui/app.js"></script>
+</body>
+</html>
